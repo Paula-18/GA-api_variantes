@@ -16,4 +16,11 @@ class VariantesController extends Controller
             limit(20)->get();
         return $variantes;
     }
+
+    public function show($id) {
+        $variante = Variante::select('id', 
+            'description', 'evidence')->
+            where('id', $id)->first();
+        return $variante;
+    } 
 }
