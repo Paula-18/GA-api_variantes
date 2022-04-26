@@ -10,7 +10,10 @@ use App\Variante;
 class VariantesController extends Controller
 {
     public function index(){
-        $variantes = Variante::limit(20)->get();
+        $variantes = Variante::select('id','lineage','common_countries','earliest_date', 
+        'designed_number', 'assigned_number', 'who_name')->
+            orderby('id', 'DESC')->
+            limit(20)->get();
         return $variantes;
     }
 }
